@@ -54,6 +54,16 @@ class UserTest extends TestCase
         $this->assertSame('testName', $this->user->getName());
     }
 
+    public function testGetUserIdentifier(): void
+    {
+        $this->assertSame('testName', $this->user->getUserIdentifier());
+    }
+
+    public function testEraseCredentialsDoesNothing()
+    {
+        $this->assertNull($this->user->eraseCredentials());
+    }
+
     public function testGetRoles(): void
     {
         $this->assertSame(['ROLE_USER'], $this->user->getRoles());

@@ -2,9 +2,10 @@
 
 namespace Jolicht\DogadoUser;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Webmozart\Assert\Assert;
 
-final class User
+final class User implements UserInterface
 {
     public function __construct(
         private readonly UserId $id,
@@ -37,6 +38,16 @@ final class User
             'client' => $this->client->toPayload(),
         ];
     }
+
+    public function eraseCredentials(): void
+    {
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->name;
+    }
+
 
     public function getId(): UserId
     {

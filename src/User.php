@@ -7,6 +7,9 @@ use Webmozart\Assert\Assert;
 
 final class User implements UserInterface
 {
+    /**
+     * @param string[] $roles
+     */
     public function __construct(
         private readonly UserId $id,
         private readonly string $name,
@@ -48,7 +51,6 @@ final class User implements UserInterface
         return $this->name;
     }
 
-
     public function getId(): UserId
     {
         return $this->id;
@@ -67,5 +69,10 @@ final class User implements UserInterface
     public function getClient(): Client
     {
         return $this->client;
+    }
+
+    public function getTenant(): Tenant
+    {
+        return $this->client->getTenant();
     }
 }

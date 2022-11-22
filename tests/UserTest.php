@@ -15,21 +15,24 @@ use PHPUnit\Framework\TestCase;
  */
 class UserTest extends TestCase
 {
+    private Tenant $tenant;
     private Client $client;
     private UserId $userId;
     private User $user;
 
     protected function setUp(): void
     {
+        $this->tenant = new Tenant(
+            id: TenantId::create(),
+            code: 'testCode',
+            name: 'testName'
+        );
+
         $this->client = new Client(
             id: ClientId::create(),
             code: 'testCode',
             name: 'testName',
-            tenant: new Tenant(
-                id: TenantId::create(),
-                code: 'testCode',
-                name: 'testName'
-            )
+            tenant: $this->tenant
         );
 
         $this->userId = UserId::fromString('699edf30-1a7b-4fc2-b3a4-7ff32e8e85b7');
@@ -72,6 +75,11 @@ class UserTest extends TestCase
     public function testGetClient(): void
     {
         $this->assertSame($this->client, $this->user->getClient());
+    }
+
+    public function testGetTenant(): void
+    {
+        $this->assertSame($this->tenant, $this->user->getTenant());
     }
 
     public function testFromPayload(): void

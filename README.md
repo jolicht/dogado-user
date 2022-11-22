@@ -1,2 +1,7 @@
 # dogado-user
-Dogado User
+
+## Installation
+
+```console
+$ composer require jolicht/dogado-user
+```

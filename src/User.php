@@ -5,6 +5,9 @@ namespace Jolicht\DogadoUser;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Webmozart\Assert\Assert;
 
+/**
+ * @psalm-immutable
+ */
 final class User implements UserInterface
 {
     /**

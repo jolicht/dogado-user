@@ -2,6 +2,9 @@
 
 namespace Jolicht\DogadoUser;
 
+/**
+ * @psalm-immutable
+ */
 final class Tenant
 {
     public function __construct(

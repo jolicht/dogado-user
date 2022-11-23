@@ -4,6 +4,9 @@ namespace Jolicht\DogadoUser;
 
 use Webmozart\Assert\Assert;
 
+/**
+ * @psalm-immutable
+ */
 final class Client
 {
     public function __construct(
